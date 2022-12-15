@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
-import { CatsService } from './cats.service';
+import { MongoModule } from 'nest-mongodb';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 @Module({
-  providers: [CatsService]
+  imports: [MongoModule.forRoot(process.env.MONGO_DB_URI, 'Cats')],
 })
 export class CatsModule {}

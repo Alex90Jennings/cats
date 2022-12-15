@@ -6,10 +6,12 @@ import { createCatDto } from './dto/create-cat.dto';
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
-  //   @Get()
-  //   findAll(): Promise<Cat[]> {
-  //     return this.catsService.findAll();
-  //   }
+  @Get()
+  findCount(): Promise<number> {
+    const count = this.catsService.findCount();
+    console.log(count);
+    return count;
+  }
 
   @Post()
   create(@Body() createCatDto: createCatDto): Promise<Cat> {

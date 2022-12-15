@@ -11,14 +11,13 @@ export class CatsService {
     this.collection = this.db.collection('cats');
   }
 
-  //   async findAll(): Promise<Cat[]> {
-  //     return await this.collection.findAll("cats")
-  //   }
+  async findCount(): Promise<number> {
+    const result = await this.collection.count();
+    return result;
+  }
 
   async create(cat: Cat) {
     const result = await this.collection.insertOne(cat);
-
-    console.log(result.insertedId);
     return result[0];
   }
 }
